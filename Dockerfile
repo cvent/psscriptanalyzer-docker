@@ -7,7 +7,7 @@ RUN powershell Set-PSRepository PSGallery -InstallationPolicy Trusted;\
     powershell Install-Module -Name PSScriptAnalyzer > /dev/null
 
 RUN echo '#!/usr/bin/env sh\n\
-powershell "\$results = Invoke-ScriptAnalyzer -Path . -Recurse $@; \$results; Exit \$results.Count" \n\
+powershell "\$results = Invoke-ScriptAnalyzer -Path . -Recurse \$@; \$results; Exit \$results.Count" \n\
 ' >> /usr/local/bin/script-analyzer.sh && chmod +x /usr/local/bin/script-analyzer.sh
 
 WORKDIR /powershell
